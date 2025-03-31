@@ -82,17 +82,6 @@ if (fuelBtn) {
   });
 }
 
-
-// coding playlist
-const playlistSection = document.createElement('section');
-playlistSection.classList.add('card');
-playlistSection.innerHTML = `
-  <h3> Coding Playlist</h3>
-  <p>Enjoy some hip hop, R&B, and pop vibes while you code:</p>
-  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYmmr74INQlb?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-`;
-document.body.appendChild(playlistSection);
-
 // daily js challenge prompts
 const challengeSection = document.createElement('section');
 challengeSection.classList.add('card');
@@ -144,6 +133,45 @@ document.getElementById("new-prompt").addEventListener("click", () => {
   const btn = document.getElementById("mark-done");
   btn.textContent = "✔️ Mark as Completed";
   btn.style.backgroundColor = "#ffd166";
+});
+
+// 🧠 Guess the Output Challenge
+const outputChallengeSection = document.createElement('section');
+outputChallengeSection.classList.add('card');
+const outputChallenges = [
+  { code: "console.log(2 + '2');", answer: "22" },
+  { code: "console.log(typeof null);", answer: "object" },
+  { code: "console.log([1,2,3] + [4,5,6]);", answer: "1,2,34,5,6" },
+  { code: "console.log(0.1 + 0.2 === 0.3);", answer: "false" },
+  { code: "let x; console.log(x);", answer: "undefined" },
+  { code: "console.log([] == false);", answer: "true" },
+  { code: "console.log({} + []);", answer: "[object Object]" },
+  { code: "console.log('5' - 3);", answer: "2" },
+  { code: "console.log(!!'false');", answer: "true" },
+  { code: "console.log(NaN === NaN);", answer: "false" }
+];
+let currentOutputIndex = 0;
+
+outputChallengeSection.innerHTML = `
+  <h3>🧠 Guess the Output</h3>
+  <pre id="output-code" style="background: #1e1e1e; padding: 1rem; border-radius: 8px; font-family: 'VT323', monospace;">${outputChallenges[currentOutputIndex].code}</pre>
+  <button id="reveal-output" style="margin: 1rem 0;">👀 Reveal Answer</button>
+  <p id="output-answer" style="display:none;"></p>
+  <button id="next-output" style="background: #ffd166;">🔁 New Challenge</button>
+`;
+document.body.appendChild(outputChallengeSection);
+
+document.getElementById("reveal-output").addEventListener("click", () => {
+  const answer = outputChallenges[currentOutputIndex].answer;
+  const answerEl = document.getElementById("output-answer");
+  answerEl.textContent = `🧠 Answer: ${answer}`;
+  answerEl.style.display = 'block';
+});
+
+document.getElementById("next-output").addEventListener("click", () => {
+  currentOutputIndex = (currentOutputIndex + 1) % outputChallenges.length;
+  document.getElementById("output-code").textContent = outputChallenges[currentOutputIndex].code;
+  document.getElementById("output-answer").style.display = 'none';
 });
 
 // journal 
@@ -214,3 +242,13 @@ window.deleteEntry = function(index) {
 };
 
 displayJournalEntries();
+
+// coding playlist
+const playlistSection = document.createElement('section');
+playlistSection.classList.add('card');
+playlistSection.innerHTML = `
+  <h3> Coding Playlist</h3>
+  <p>Enjoy some hip hop, R&B, and pop vibes while you code:</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYmmr74INQlb?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+`;
+document.body.appendChild(playlistSection);
