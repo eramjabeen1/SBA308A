@@ -16,7 +16,8 @@ if (snackBtn) {
         <h3 class="fade-in">🍽️ Snack Stack:</h3>
         <p><strong>${meal.strMeal}</strong> - ${meal.strArea} Cuisine</p>
         <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="fade-in" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;" />
-        <p><a href="${meal.strSource || meal.strYoutube}" target="_blank">View Recipe</a></p>
+        <p><a href="${meal.strSource || meal.strYoutube}" target="_blank" class="recipe-link">View Recipe</a></p>
+
       `;
     } catch (err) {
       snackResult.innerHTML = `<p class="fade-in"> Couldn't fetch a meal suggestion right now. Try a snack from your fridge!</p>`;

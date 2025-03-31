@@ -111,3 +111,46 @@ textarea {
     grid-column: 1 / -1;
   }
 }
+
+#journal-entry {
+  background-image: linear-gradient(#444 1px, transparent 1px);
+  background-size: 100% 2rem;
+  line-height: 2rem;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffc107;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #2e2f31;
+}
+
+a.recipe-link {
+  display: inline-block;
+  color: #ffd166;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: 2px solid #ffd166;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 0.7rem;
+}
+
+a.recipe-link:hover {
+  background-color: #ffd166;
+  color: #1f1f1f;
+  box-shadow: 0 0 10px #ffd166;
+}
