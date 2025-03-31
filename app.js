@@ -107,7 +107,9 @@ const jsPrompts = [
   "Write a function to flatten an array.",
   "Make a digital dice roller (1–6)."
 ];
-const todayIndex = new Date().getDate() % jsPrompts.length;
+
+const savedIndex = localStorage.getItem("currentPromptIndex");
+const todayIndex = savedIndex !== null ? Number(savedIndex) : Math.floor(Math.random() * jsPrompts.length);
 const todaysPrompt = jsPrompts[todayIndex];
 const promptKey = `challenge-${todayIndex}`;
 const isCompleted = localStorage.getItem(promptKey) === "done";
@@ -118,6 +120,7 @@ challengeSection.innerHTML = `
   <button id="mark-done" style="margin-top: 1rem; background-color: ${isCompleted ? '#88f6b8' : '#ffd166'};">
     ${isCompleted ? '✅ Completed' : '✔️ Mark as Completed'}
   </button>
+  <button id="new-prompt" style="margin-top: 1rem; background-color: #ffd166;">🔁 New Prompt</button>
 `;
 document.body.appendChild(challengeSection);
 
@@ -126,6 +129,20 @@ document.getElementById("mark-done").addEventListener("click", () => {
   const btn = document.getElementById("mark-done");
   btn.textContent = "✅ Completed";
   btn.style.backgroundColor = "#88f6b8";
+});
+
+document.getElementById("new-prompt").addEventListener("click", () => {
+  const randomIndex = Math.floor(Math.random() * jsPrompts.length);
+  const newPrompt = jsPrompts[randomIndex];
+  const newPromptKey = `challenge-${randomIndex}`;
+
+  document.getElementById("daily-prompt").textContent = newPrompt;
+  localStorage.setItem("currentPromptIndex", randomIndex);
+  localStorage.removeItem(newPromptKey);
+
+  const btn = document.getElementById("mark-done");
+  btn.textContent = "✔️ Mark as Completed";
+  btn.style.backgroundColor = "#ffd166";
 });
 
 // journal 
