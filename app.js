@@ -24,6 +24,64 @@ if (snackBtn) {
   });
 }
 
+// ☕ Code Fuel - Local Quote + Drink Image
+const fuelBtn = document.getElementById('get-fuel');
+const fuelResult = document.getElementById('fuel-result');
+
+if (fuelBtn) {
+  fuelBtn.addEventListener('click', () => {
+    // 10 Inspirational Dev Quotes
+    const localQuotes = [
+      { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" },
+      { text: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+      { text: "Simplicity is the soul of efficiency.", author: "Austin Freeman" },
+      { text: "Programs must be written for people to read.", author: "Harold Abelson" },
+      { text: "Experience is the name everyone gives to their mistakes.", author: "Oscar Wilde" },
+      { text: "First, solve the problem. Then, write the code.", author: "John Johnson" },
+      { text: "Good programmers write code that humans can understand.", author: "Martin Fowler" },
+      { text: "You don’t need to know everything. Just know where to find it.", author: "Unknown" },
+      { text: "Fix the cause, not the symptom.", author: "Steve Maguire" },
+      { text: "Before software can be reusable it first has to be usable.", author: "Ralph Johnson" }
+    ];
+
+    const fuelImages = {
+      coffee: [
+        "https://images.pexels.com/photos/414630/pexels-photo-414630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/1749303/pexels-photo-1749303.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/1162455/pexels-photo-1162455.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      tea: [
+        "https://images.pexels.com/photos/1638280/pexels-photo-1638280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/259955/pexels-photo-259955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/34780/mug-raspberries-berry-tea.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      energy: [
+        "https://images.pexels.com/photos/12018245/pexels-photo-12018245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/4443464/pexels-photo-4443464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7656390/pexels-photo-7656390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ]
+    };
+    
+
+    const fuelTypes = Object.keys(fuelImages);
+    const randomType = fuelTypes[Math.floor(Math.random() * fuelTypes.length)];
+    const fuelImage = fuelImages[randomType][Math.floor(Math.random() * fuelImages[randomType].length)];
+
+    const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
+
+    fuelResult.innerHTML = `
+      <blockquote class="fade-in" style="font-size: 1.1rem; line-height: 1.5; font-family: 'VT323', monospace;">
+        "${quote.text}"<br><br>
+        — <em>${quote.author}</em>
+      </blockquote>
+      <img src="${fuelImage}" alt="${randomType}" class="fade-in" 
+        style="max-width: 100%; height: auto; border-radius: 10px; margin-top: 1rem;" />
+      <p style="margin-top: 0.5rem; font-size: 0.9rem;">Your fuel: <strong>${randomType.toUpperCase()}</strong></p>
+    `;
+  });
+}
+
+
 // coding playlist
 const playlistSection = document.createElement('section');
 playlistSection.classList.add('card');
