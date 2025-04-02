@@ -156,7 +156,7 @@ a.recipe-link:hover {
 }
 
 body {
-  background-image: url('https://images.pexels.com/photos/163018/food-business-lunch-restaurant-lunch-163018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: url('https://t3.ftcdn.net/jpg/03/34/73/70/360_F_334737017_7stFoTlrlKDEwuJU7BDeRNBj6K98l88i.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -174,3 +174,4 @@ body::before {
   background-color: rgba(10, 10, 10, 0.6);
   z-index: -1;
 }
+

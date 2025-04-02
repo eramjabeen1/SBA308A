@@ -13,7 +13,7 @@ if (snackBtn) {
       const data = await response.json();
       const meal = data.meals[0];
       snackResult.innerHTML = `
-        <h3 class="fade-in">🍽️ Snack Stack:</h3>
+        <h3 class="fade-in"> Snack Stack:</h3>
         <p><strong>${meal.strMeal}</strong> - ${meal.strArea} Cuisine</p>
         <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="fade-in" style="max-width: 100%; border-radius: 10px; margin-top: 1rem;" />
         <p><a href="${meal.strSource || meal.strYoutube}" target="_blank" class="recipe-link">View Recipe</a></p>
@@ -135,7 +135,7 @@ document.getElementById("new-prompt").addEventListener("click", () => {
   btn.style.backgroundColor = "#ffd166";
 });
 
-// 🧠 Guess the Output Challenge
+//  Guess the Output Challenge
 const outputChallengeSection = document.createElement('section');
 outputChallengeSection.classList.add('card');
 const outputChallenges = [
@@ -153,18 +153,18 @@ const outputChallenges = [
 let currentOutputIndex = 0;
 
 outputChallengeSection.innerHTML = `
-  <h3>🧠 Guess the Output</h3>
+  <h3> Guess the Output</h3>
   <pre id="output-code" style="background: #1e1e1e; padding: 1rem; border-radius: 8px; font-family: 'VT323', monospace;">${outputChallenges[currentOutputIndex].code}</pre>
   <button id="reveal-output" style="margin: 1rem 0;">👀 Reveal Answer</button>
   <p id="output-answer" style="display:none;"></p>
-  <button id="next-output" style="background: #ffd166;">🔁 New Challenge</button>
+  <button id="next-output" style="background: #ffd166;"> New Challenge</button>
 `;
 document.body.appendChild(outputChallengeSection);
 
 document.getElementById("reveal-output").addEventListener("click", () => {
   const answer = outputChallenges[currentOutputIndex].answer;
   const answerEl = document.getElementById("output-answer");
-  answerEl.textContent = `🧠 Answer: ${answer}`;
+  answerEl.textContent = ` Answer: ${answer}`;
   answerEl.style.display = 'block';
 });
 
@@ -221,14 +221,14 @@ function displayJournalEntries() {
   const savedJournals = JSON.parse(localStorage.getItem('devJournal') || '[]');
 
   if (savedJournals.length === 0) {
-    history.innerHTML = "<p style='color: #aaa;'>No journal entries yet. Start writing! ✍️</p>";
+    history.innerHTML = "<p style='color: #aaa;'>No journal entries yet. Start writing! </p>";
     return;
   }
 
   history.innerHTML = savedJournals.map((j, index) => `
     <div style="background: rgba(255,255,255,0.05); padding: 1rem; margin-bottom: 1rem; border-radius: 10px;">
       <p style="font-size: 0.9rem;">${j.entry}</p>
-      <small style="color: #aaa;">🕒 ${j.date}</small><br>
+      <small style="color: #aaa;"> ${j.date}</small><br>
       <button onclick="deleteEntry(${index})" style="margin-top: 0.5rem; background: #ff7675; color: white;">🗑️ Delete</button>
     </div>
   `).join('');
